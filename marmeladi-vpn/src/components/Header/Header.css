@@ -14,13 +14,9 @@
     box-sizing: border-box;
     z-index: 1000;
   }
-  
-  .logo {
-    height: 40px;
-  }
-  
+
   .translate-button {
-    padding: 10px 20px;
+    padding: 20px 30px;
     background-color: #ffffff;
     border: none;
     border-radius: 5px;
@@ -31,4 +27,48 @@
   .translate-button:hover {
     background-color: #e0e0e0;
   }
-  
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  height: 50px;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+}
+
+.avatar-container {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.avatar {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  margin-left: 10px;
+}
+
+.translate-button, 
+.login-button, 
+.settings-button {
+  padding: 10px 15px;
+  margin-left: 10px;
+  background-color: #656565;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.translate-button:hover, 
+.login-button:hover, 
+.settings-button:hover {
+  background-color: #0056b3;
+}
