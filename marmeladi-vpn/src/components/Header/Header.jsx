@@ -1,7 +1,10 @@
 // src/components/Header.js
-import avatar from '../../assets/avatar.jpg'
+import settings from '../../assets/settings.png'
+import question from '../../assets/question.png'
+import login from '../../assets/login.svg'
+import gummyBearPink from '../../assets/gummyBearPink.png'
 import React from 'react';
-import './Header.css'; 
+import './Header.scss'; 
 
 const Header = () => {
   const handleTranslate = () => {
@@ -19,20 +22,11 @@ const Header = () => {
   return (
     <header className="header">
       <div className="logo-container">
-      <img src={avatar} alt="logo " className="logo" />
+      <img src={gummyBearPink} alt="logo " className="logo" />
       </div>
       <div className="header-right">
-        <div className="avatar-container">
-          <img src={avatar} alt="Avatar " className="avatar" />
-          <img src={avatar} alt="Avatar " className="avatar" />
-          <img src={avatar} alt="Avatar " className="avatar" />
-          <img src={avatar} alt="Avatar " className="avatar" />
-        </div>
-        <button className="login-button" onClick={handleLogin}>
-          Логин
-        </button>
-        <button className="settings-button" onClick={handleSettings}>
-          Настройки
+        <button className="question-button" onClick={handleSettings}>
+          <img src={question} alt="login" className="login-icon" />
         </button>
       </div>
     </header>

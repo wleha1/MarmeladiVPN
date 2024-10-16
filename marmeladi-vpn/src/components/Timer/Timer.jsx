@@ -1,67 +1,56 @@
-// src/components/Timer.js
+// src/components/TimerButton.js
 import React, { useState, useEffect } from 'react';
-import './Timer.css';
+import './Timer.scss';
 
-const Timer = () => {
-  const [seconds, setSeconds] = useState(0);
-  const [isActive, setIsActive] = useState(false);
+const TimerButton = () => {
+  const [seconds, setSeconds] = useState(0);  // Количество секунд
+  const [isActive, setIsActive] = useState(false);  // Состояние таймера (активен или нет)
 
+  // Используем useEffect для запуска таймера
   useEffect(() => {
     let interval = null;
 
     if (isActive) {
+      // Если таймер активен, запускаем интервал для увеличения времени каждую секунду
       interval = setInterval(() => {
         setSeconds(prevSeconds => prevSeconds + 1);
       }, 1000);
     } else if (!isActive && seconds !== 0) {
+      // Если таймер остановлен, очищаем интервал
       clearInterval(interval);
     }
 
     return () => clearInterval(interval);
-  }, [isActive, seconds]);
+  }, [isActive, seconds]);  // Зависит от isActive и seconds
 
-  const handleStart = () => {
-    setIsActive(true);
+  // Обработка нажатия на кнопку
+  const handleClick = () => {
+    setIsActive(true);  // Активируем таймер
   };
 
-  const handleStop = () => {
-    setIsActive(false);
-  };
-
-  const handleReset = () => {
-    setIsActive(false);
-    setSeconds(0);
+  // Форматирование времени в часы:минуты:секунды
+  const formatTime = (totalSeconds) => {
+    const hours = String(Math.floor(totalSeconds / 3600)).padStart(2, '0');
+    const minutes = String(Math.floor((totalSeconds % 3600) / 60)).padStart(2, '0');
+    const secs = String(totalSeconds % 60).padStart(2, '0');
+    return `${hours}:${minutes}:${secs}`;
   };
 
   return (
-    <div className="timer-container">
-      <div className="time-display">
-        {new Date(seconds * 1000).toISOString().substr(11, 8)}
-      </div>
-      <div className="timer-buttons">
-        {!isActive && seconds === 0 && (
-          <button onClick={handleStart} className="start-button">
-            Старт
-          </button>
-        )}
-        {isActive && (
-          <button onClick={handleStop} className="stop-button">
-            Стоп
-          </button>
-        )}
-        {!isActive && seconds > 0 && (
-          <>
-            <button onClick={handleStart} className="resume-button">
-              Продолжить
-            </button>
-            <button onClick={handleReset} className="reset-button">
-              Сброс
-            </button>
-          </>
-        )}
+    <div className="timer-button-container">
+      {/* Кнопка, по нажатию на которую запускается таймер */}
+      <button className="main-button" onClick={handleClick}>
+        Нажми меня
+      </button>
+
+      {/* Блок с таймером под кнопкой */}
+      <div className="timer-block">
+        <div className="timer-display">
+          {formatTime(seconds)}  {/* Форматированное время */}
+        </div>
       </div>
     </div>
   );
 };
 
-export default Timer;
+export default TimerButton;

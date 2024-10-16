@@ -2,7 +2,7 @@
 import React from 'react';
 import Header from '../../components/Header';
 import Timer from '../../components/Timer'
-import './styles.css'; // Предполагаем, что у вас есть стили для Main
+import './styles.scss'; 
 
 export default function Main() {
   const handleClick = () => {
@@ -11,11 +11,8 @@ export default function Main() {
 
   return (
     <main className="main">
-      <Header /> {/* Добавляем компонент Header здесь */}
-      <button className="main-button" onClick={handleClick}>
-        Нажми меня
-      </button>
-      <Timer /> {/* Добавляем компонент Timer */}
+      <Header /> 
+      <Timer /> 
     </main>
   );
 } 
