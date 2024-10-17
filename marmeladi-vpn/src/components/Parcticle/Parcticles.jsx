@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import "./Parcticles.scss"
 
 const ParticlesBackground = () => {
   useEffect(() => {
@@ -120,7 +119,18 @@ const ParticlesBackground = () => {
   }, []);
 
   return (
-    <div id="particles-js" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: 1 }} />
+    <div 
+      id="particles-js" 
+      style={{ 
+        position: 'absolute', 
+        top: 0, 
+        left: 0, 
+        width: '100%', 
+        height: '100%', 
+        zIndex: 0,
+        filter: 'blur(2px)', // Применяем блюр к частицам
+      }} 
+    />
   );
 };
 

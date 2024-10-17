@@ -7,10 +7,13 @@
 html, body {
   height: 100%;
   font-family: Arial, sans-serif;
-  background-color: black;
-  z-index: -1;
+  background: url('./assets/Background.png'); /* Если изображение в public, укажите путь относительно public */
+  background-size: cover; /* Заполняем весь экран */
+  background-position: center; /* Центрируем изображение */
+  background-repeat: no-repeat; /* Не повторяем изображение */
 }
 
 #root {
   height: 100%;
 }
+

@@ -1,5 +1,4 @@
 // src/App.js
-import Header from './components/Header/Header';
 import Main from './pages/main/Main';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
