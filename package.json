@@ -3,7 +3,9 @@
     "sass": "^1.79.5"
   },
   "dependencies": {
+    "@hookform/resolvers": "^3.9.0",
     "@react-three/fiber": "^8.17.10",
-    "three": "^0.169.0"
+    "three": "^0.169.0",
+    "yup": "^1.4.0"
   }
 }
