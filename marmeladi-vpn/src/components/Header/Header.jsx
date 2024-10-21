@@ -7,13 +7,6 @@ import React from 'react';
 import './Header.scss'; 
 
 const Header = () => {
-  const handleTranslate = () => {
-    alert('Функция перевода пока не реализована.');
-  };
-
-  const handleLogin = () => {
-    alert('Функция входа пока не реализована.');
-  };
 
   const handleSettings = () => {
     alert('Функция настроек пока не реализована.');

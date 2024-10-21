@@ -10,16 +10,23 @@
 }
 
 .main-button {
-  padding: 200px 170px;
+  width: 400px;  /* Ширина кнопки */
+  height: 400px; /* Высота кнопки */
+  padding: 0;
   margin-bottom: 13%;
-  background-color: #636363;
+  background-color: #3f3f3f; /* Цвет фона кнопки */
   border: none;
-  border-radius: 50%;
-  cursor: pointer;
-  font-size: 16px;
-  font-weight: bold;
+  border-radius: 50%; /* Круглая форма кнопки */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#buttonImage {
+  height: 300px; /* Высота изображения внутри кнопки */
+  object-fit: cover; /* Обеспечивает правильное отображение изображения */
 }
 
 .main-button:hover {
-  background-color: #e0e0e0;
+  background-color: #545454;
 }
