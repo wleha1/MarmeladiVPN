@@ -8,6 +8,7 @@ const TimerButton = () => {
   const [seconds, setSeconds] = useState(0); // Количество секунд
   const [isActive, setIsActive] = useState(false); // Состояние таймера (активен или нет)
   const [isPink, setIsPink] = useState(true); // Состояние для переключения изображения
+  const [glow, setGlow] = useState(false); // Состояние для включения glow-эффекта
 
   // Используем useEffect для запуска таймера
   useEffect(() => {
@@ -18,18 +19,28 @@ const TimerButton = () => {
       interval = setInterval(() => {
         setSeconds((prevSeconds) => prevSeconds + 1);
       }, 1000);
-    } else if (!isActive && seconds !== 0) {
+    } else {
       // Если таймер остановлен, очищаем интервал
       clearInterval(interval);
     }
 
     return () => clearInterval(interval);
-  }, [isActive, seconds]); // Зависит от isActive и seconds
+  }, [isActive]); // Зависит только от isActive
 
   // Обработка нажатия на кнопку
   const handleClick = () => {
-    setIsActive(true); // Активируем таймер
-    setIsPink((prev) => !prev); // Переключаем изображение
+    if (isActive) {
+      // Если таймер активен, сбрасываем таймер
+      setIsActive(false);  // Останавливаем таймер
+      setSeconds(0);       // Сбрасываем время
+      setGlow(false);      // Отключаем glow-эффект
+      setIsPink(true);     // Возвращаем исходное изображение
+    } else {
+      // Если таймер не активен, запускаем его
+      setIsActive(true);   // Запускаем таймер
+      setIsPink(false);    // Меняем изображение
+      setGlow(true);       // Включаем glow-эффект
+    }
   };
 
   // Форматирование времени в часы:минуты:секунды
@@ -42,8 +53,12 @@ const TimerButton = () => {
 
   return (
     <div className="timer-button-container">
-      {/* Кнопка, по нажатию на которую запускается таймер */}
-      <button className="main-button" id="imageButton" onClick={handleClick}>
+      {/* Кнопка, по нажатию на которую запускается/останавливается таймер */}
+      <button 
+        className={`main-button ${glow ? 'active' : ''}`} 
+        id="imageButton" 
+        onClick={handleClick}
+      >
         <img src={isPink ? gummyBearGrey : gummyBearPink} alt="Button Image" id="buttonImage" />
       </button>
 
